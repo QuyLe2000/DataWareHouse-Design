@@ -1,4 +1,4 @@
-# DataWareHouse-Design
+# DataWareHouse-Design-With-SSIS-SQL
 Data warehouse design with staging &amp; star schema: Extract, validate &amp; transform data in staging. Load into star schema (fact &amp; dimension tables). Aggregates &amp; indexes optimize performance. Enables efficient data storage, analysis &amp; reporting.
 
 First, the data collection step, I retrieve data from adventure 2014 bak: https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver16&tabs=ssms.
