@@ -9,7 +9,7 @@ Then, i imported to SQL Server by Restore Database
 Then
 ![screenshot_1691572712](https://github.com/QuyLe2000/DataWareHouse-Design/assets/90446677/cd8a113f-c28f-4c67-add6-6d6b874ef3d0)
 
-And i have Database like this
+And I have Database like this :
 ![Ad](https://github.com/QuyLe2000/DataWareHouse-Design/assets/90446677/d694870c-660b-4ee4-bb75-06ce7d4da5bd)
 
 After that, i want to create a Database name "Staging" to load data from this but some tables i need ( In fact, we just get some tables in needed)
