@@ -9,7 +9,10 @@ Then, i imported to SQL Server by Restore Database
 Then
 ![screenshot_1691572712](https://github.com/QuyLe2000/DataWareHouse-Design/assets/90446677/cd8a113f-c28f-4c67-add6-6d6b874ef3d0)
 
-And i have Database like this, i want to create a Database name "Staging" to load data from this but some tables i need ( In fact, we just get some tables in needed)
+And i have Database like this
+![Ad](https://github.com/QuyLe2000/DataWareHouse-Design/assets/90446677/d694870c-660b-4ee4-bb75-06ce7d4da5bd)
+
+After that, i want to create a Database name "Staging" to load data from this but some tables i need ( In fact, we just get some tables in needed)
 This is why i created this database: 
 Data Validation and Cleaning: The staging database acts as an intermediate step where you can validate and clean the incoming data. This helps to ensure that the data being loaded into the data warehouse is accurate, consistent, and follows the required data quality standards. You can identify and handle data anomalies, missing values, or inconsistencies in the staging database before moving the data to the data warehouse.
 
