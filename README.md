@@ -28,4 +28,7 @@ My staging database:
 
 ![rs](https://github.com/QuyLe2000/DataWareHouse-Design/assets/90446677/c5cb557e-0726-4b54-9318-94687dbffe49)
 
+Then i use SSIS to load data from Staging to Data Warehouse.Finally, I have a data Warehouse with Star Schema like this :
+
+![image](https://github.com/QuyLe2000/DataWareHouse-Design/assets/90446677/5c6e5e84-0bf8-40d5-ab92-a64792e5fb3b)
 
