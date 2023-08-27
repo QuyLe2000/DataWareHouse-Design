@@ -23,6 +23,12 @@ Data Transformation: Often, data from different sources might have varying forma
 Data Auditing and Traceability: Staging databases can be useful for auditing purposes. You can keep track of the changes made to the data during the ETL process. This provides transparency and traceability, which is crucial for compliance, troubleshooting, and understanding how data has been modified before entering the data warehouse.
 
 Performance Optimization: Loading data directly into a data warehouse can be resource-intensive and impact the overall performance of the system, especially if transformations and validations are performed during the load process. Using a staging database allows you to offload some of the processing overhead from the data warehouse, ensuring smoother and more efficient data loading.
+I used SISS to load data from Data Source to Staging Database:
+An example , i loaded Employee Table 
+![image](https://github.com/QuyLe2000/DataWareHouse-Design/assets/90446677/cef874d8-7620-4c88-8df2-ead61ec3d6b9)
+
+![image](https://github.com/QuyLe2000/DataWareHouse-Design/assets/90446677/3d664458-4620-4e2a-b4ec-e1f3e526d56d)
+
 
 My staging database:
 
