@@ -24,10 +24,16 @@ Data Auditing and Traceability: Staging databases can be useful for auditing pur
 
 Performance Optimization: Loading data directly into a data warehouse can be resource-intensive and impact the overall performance of the system, especially if transformations and validations are performed during the load process. Using a staging database allows you to offload some of the processing overhead from the data warehouse, ensuring smoother and more efficient data loading.
 I used SISS to load data from Data Source to Staging Database:
-An example , i loaded Employee Table 
+An example , The SSIS process each person will do differently depending on the output requirements, here I transform , for example the employee table I only add 1 column SSISTrackID , In the Currency Table I convert the currency based on USD. This is my Employee Table on Staging SSIS and Database:
 ![image](https://github.com/QuyLe2000/DataWareHouse-Design/assets/90446677/cef874d8-7620-4c88-8df2-ead61ec3d6b9)
 
+![image](https://github.com/QuyLe2000/DataWareHouse-Design/assets/90446677/9a4309fa-4106-431c-8f4c-f0ba8ef73664)
+
+
 ![image](https://github.com/QuyLe2000/DataWareHouse-Design/assets/90446677/3d664458-4620-4e2a-b4ec-e1f3e526d56d)
+
+![image](https://github.com/QuyLe2000/DataWareHouse-Design/assets/90446677/80497ee4-d880-4524-a96e-8fdda65c2b9a)
+
 
 
 My staging database:
