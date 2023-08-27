@@ -1,0 +1,960 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/4/2023 3:35:03 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-R09UK6A"
+  DTS:CreatorName="DESKTOP-R09UK6A\Qlee2"
+  DTS:DTSID="{74282F97-6113-4905-BB1D-D07B9E2C8BBE}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5223.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Person"
+  DTS:PackageType="5"
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{6F21FFFC-1529-44C6-8B96-8E2F80067054}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-R09UK6A\SQLEXPRESS.AdventureWorks2014]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{06D5FBFD-BB56-407E-AF4C-9BD77AB01535}"
+      DTS:ObjectName="DESKTOP-R09UK6A\SQLEXPRESS.AdventureWorks2014">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-R09UK6A\SQLEXPRESS;Initial Catalog=AdventureWorks2014;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{06D5FBFD-BB56-407E-AF4C-9BD77AB01535}DESKTOP-R09UK6A\SQLEXPRESS.AdventureWorks2014;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-R09UK6A\SQLEXPRESS.STG_AdventureWorks]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{0867F951-3586-4CB6-815E-8B1925EA2254}"
+      DTS:ObjectName="DESKTOP-R09UK6A\SQLEXPRESS.STG_AdventureWorks">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-R09UK6A\SQLEXPRESS;Initial Catalog=STG_AdventureWorks;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{0867F951-3586-4CB6-815E-8B1925EA2254}DESKTOP-R09UK6A\SQLEXPRESS.STG_AdventureWorks;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-R09UK6A\SQLEXPRESS.STG_AdventureWorks 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{6877838F-BC89-4A71-9E1C-39A84BE9DD18}"
+      DTS:ObjectName="DESKTOP-R09UK6A\SQLEXPRESS.STG_AdventureWorks 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-R09UK6A\SQLEXPRESS;Initial Catalog=STG_AdventureWorks;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{6877838F-BC89-4A71-9E1C-39A84BE9DD18}DESKTOP-R09UK6A\SQLEXPRESS.STG_AdventureWorks 1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Person"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{24BAE37B-03B7-41FA-96FB-6FF7452741C0}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Person"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Person\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Person\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Person\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Person\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Person\Derived Column.Outputs[Derived Column Output].Columns[SSISTrackID]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Person\Derived Column.Outputs[Derived Column Output].Columns[SSISTrackID]"
+                      name="SSISTrackID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[System::ServerExecutionID]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[System::ServerExecutionID]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Person\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Person\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Person\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Person\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Person\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Person\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Person\Person"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Person"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Person].[Person]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Person\Person.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-R09UK6A\SQLEXPRESS.AdventureWorks2014]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-R09UK6A\SQLEXPRESS.AdventureWorks2014]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Person\Person.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Person\Person.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                      name="ModifiedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[rowguid]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Person\Person.Outputs[OLE DB Source Output].ExternalColumns[rowguid]"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[rowguid]"
+                      name="rowguid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Person\Person.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
+                      name="BusinessEntityID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[PersonType]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Person\Person.Outputs[OLE DB Source Output].ExternalColumns[PersonType]"
+                      length="2"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[PersonType]"
+                      name="PersonType"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[NameStyle]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Person\Person.Outputs[OLE DB Source Output].ExternalColumns[NameStyle]"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[NameStyle]"
+                      name="NameStyle"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[Title]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Person\Person.Outputs[OLE DB Source Output].ExternalColumns[Title]"
+                      length="8"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[Title]"
+                      name="Title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[FirstName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Person\Person.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
+                      length="50"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[FirstName]"
+                      name="FirstName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[MiddleName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Person\Person.Outputs[OLE DB Source Output].ExternalColumns[MiddleName]"
+                      length="50"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[MiddleName]"
+                      name="MiddleName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[LastName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Person\Person.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
+                      length="50"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[LastName]"
+                      name="LastName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[Suffix]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Person\Person.Outputs[OLE DB Source Output].ExternalColumns[Suffix]"
+                      length="10"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[Suffix]"
+                      name="Suffix"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[EmailPromotion]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Person\Person.Outputs[OLE DB Source Output].ExternalColumns[EmailPromotion]"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[EmailPromotion]"
+                      name="EmailPromotion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[AdditionalContactInfo]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Person\Person.Outputs[OLE DB Source Output].ExternalColumns[AdditionalContactInfo]"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[AdditionalContactInfo]"
+                      name="AdditionalContactInfo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[Demographics]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Person\Person.Outputs[OLE DB Source Output].ExternalColumns[Demographics]"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[Demographics]"
+                      name="Demographics"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Output].ExternalColumns[rowguid]"
+                      dataType="guid"
+                      name="rowguid" />
+                    <externalMetadataColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
+                      dataType="i4"
+                      name="BusinessEntityID" />
+                    <externalMetadataColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Output].ExternalColumns[PersonType]"
+                      dataType="wstr"
+                      length="2"
+                      name="PersonType" />
+                    <externalMetadataColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Output].ExternalColumns[NameStyle]"
+                      dataType="bool"
+                      name="NameStyle" />
+                    <externalMetadataColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Output].ExternalColumns[Title]"
+                      dataType="wstr"
+                      length="8"
+                      name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="50"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Output].ExternalColumns[MiddleName]"
+                      dataType="wstr"
+                      length="50"
+                      name="MiddleName" />
+                    <externalMetadataColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="50"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Output].ExternalColumns[Suffix]"
+                      dataType="wstr"
+                      length="10"
+                      name="Suffix" />
+                    <externalMetadataColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Output].ExternalColumns[EmailPromotion]"
+                      dataType="i4"
+                      name="EmailPromotion" />
+                    <externalMetadataColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Output].ExternalColumns[AdditionalContactInfo]"
+                      dataType="nText"
+                      name="AdditionalContactInfo" />
+                    <externalMetadataColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Output].ExternalColumns[Demographics]"
+                      dataType="nText"
+                      name="Demographics" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Person\Person.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
+                      dataType="i4"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
+                      name="BusinessEntityID" />
+                    <outputColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[PersonType]"
+                      dataType="wstr"
+                      length="2"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[PersonType]"
+                      name="PersonType" />
+                    <outputColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[NameStyle]"
+                      dataType="bool"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[NameStyle]"
+                      name="NameStyle" />
+                    <outputColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[Title]"
+                      dataType="wstr"
+                      length="8"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[Title]"
+                      name="Title" />
+                    <outputColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[FirstName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[FirstName]"
+                      name="FirstName" />
+                    <outputColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[MiddleName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[MiddleName]"
+                      name="MiddleName" />
+                    <outputColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[LastName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[LastName]"
+                      name="LastName" />
+                    <outputColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[Suffix]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[Suffix]"
+                      name="Suffix" />
+                    <outputColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[EmailPromotion]"
+                      dataType="i4"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[EmailPromotion]"
+                      name="EmailPromotion" />
+                    <outputColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[AdditionalContactInfo]"
+                      dataType="nText"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[AdditionalContactInfo]"
+                      name="AdditionalContactInfo" />
+                    <outputColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[Demographics]"
+                      dataType="nText"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[Demographics]"
+                      name="Demographics" />
+                    <outputColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[rowguid]"
+                      dataType="guid"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[rowguid]"
+                      name="rowguid" />
+                    <outputColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                      name="ModifiedDate" />
+                    <outputColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Person\Staging"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Staging"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[erp].[Person]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Person\Staging.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-R09UK6A\SQLEXPRESS.STG_AdventureWorks]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-R09UK6A\SQLEXPRESS.STG_AdventureWorks]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Person\Staging.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Person\Staging.Inputs[OLE DB Destination Input].Columns[ModifiedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ModifiedDate"
+                      externalMetadataColumnId="Package\Person\Staging.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[ModifiedDate]" />
+                    <inputColumn
+                      refId="Package\Person\Staging.Inputs[OLE DB Destination Input].Columns[rowguid]"
+                      cachedDataType="guid"
+                      cachedName="rowguid"
+                      externalMetadataColumnId="Package\Person\Staging.Inputs[OLE DB Destination Input].ExternalColumns[rowguid]"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[rowguid]" />
+                    <inputColumn
+                      refId="Package\Person\Staging.Inputs[OLE DB Destination Input].Columns[BusinessEntityID]"
+                      cachedDataType="i4"
+                      cachedName="BusinessEntityID"
+                      externalMetadataColumnId="Package\Person\Staging.Inputs[OLE DB Destination Input].ExternalColumns[BusinessEntityID]"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[BusinessEntityID]" />
+                    <inputColumn
+                      refId="Package\Person\Staging.Inputs[OLE DB Destination Input].Columns[PersonType]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="PersonType"
+                      externalMetadataColumnId="Package\Person\Staging.Inputs[OLE DB Destination Input].ExternalColumns[PersonType]"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[PersonType]" />
+                    <inputColumn
+                      refId="Package\Person\Staging.Inputs[OLE DB Destination Input].Columns[NameStyle]"
+                      cachedDataType="bool"
+                      cachedName="NameStyle"
+                      externalMetadataColumnId="Package\Person\Staging.Inputs[OLE DB Destination Input].ExternalColumns[NameStyle]"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[NameStyle]" />
+                    <inputColumn
+                      refId="Package\Person\Staging.Inputs[OLE DB Destination Input].Columns[Title]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="Title"
+                      externalMetadataColumnId="Package\Person\Staging.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[Title]" />
+                    <inputColumn
+                      refId="Package\Person\Staging.Inputs[OLE DB Destination Input].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="FirstName"
+                      externalMetadataColumnId="Package\Person\Staging.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\Person\Staging.Inputs[OLE DB Destination Input].Columns[MiddleName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="MiddleName"
+                      externalMetadataColumnId="Package\Person\Staging.Inputs[OLE DB Destination Input].ExternalColumns[MiddleName]"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[MiddleName]" />
+                    <inputColumn
+                      refId="Package\Person\Staging.Inputs[OLE DB Destination Input].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\Person\Staging.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[LastName]" />
+                    <inputColumn
+                      refId="Package\Person\Staging.Inputs[OLE DB Destination Input].Columns[Suffix]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Suffix"
+                      externalMetadataColumnId="Package\Person\Staging.Inputs[OLE DB Destination Input].ExternalColumns[Suffix]"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[Suffix]" />
+                    <inputColumn
+                      refId="Package\Person\Staging.Inputs[OLE DB Destination Input].Columns[EmailPromotion]"
+                      cachedDataType="i4"
+                      cachedName="EmailPromotion"
+                      externalMetadataColumnId="Package\Person\Staging.Inputs[OLE DB Destination Input].ExternalColumns[EmailPromotion]"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[EmailPromotion]" />
+                    <inputColumn
+                      refId="Package\Person\Staging.Inputs[OLE DB Destination Input].Columns[AdditionalContactInfo]"
+                      cachedDataType="nText"
+                      cachedName="AdditionalContactInfo"
+                      externalMetadataColumnId="Package\Person\Staging.Inputs[OLE DB Destination Input].ExternalColumns[AdditionalContactInfo]"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[AdditionalContactInfo]" />
+                    <inputColumn
+                      refId="Package\Person\Staging.Inputs[OLE DB Destination Input].Columns[Demographics]"
+                      cachedDataType="nText"
+                      cachedName="Demographics"
+                      externalMetadataColumnId="Package\Person\Staging.Inputs[OLE DB Destination Input].ExternalColumns[Demographics]"
+                      lineageId="Package\Person\Person.Outputs[OLE DB Source Output].Columns[Demographics]" />
+                    <inputColumn
+                      refId="Package\Person\Staging.Inputs[OLE DB Destination Input].Columns[SSISTrackID]"
+                      cachedDataType="i8"
+                      cachedName="SSISTrackID"
+                      externalMetadataColumnId="Package\Person\Staging.Inputs[OLE DB Destination Input].ExternalColumns[SSISTrackId]"
+                      lineageId="Package\Person\Derived Column.Outputs[Derived Column Output].Columns[SSISTrackID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Person\Staging.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Person\Staging.Inputs[OLE DB Destination Input].ExternalColumns[rowguid]"
+                      dataType="guid"
+                      name="rowguid" />
+                    <externalMetadataColumn
+                      refId="Package\Person\Staging.Inputs[OLE DB Destination Input].ExternalColumns[BusinessEntityID]"
+                      dataType="i4"
+                      name="BusinessEntityID" />
+                    <externalMetadataColumn
+                      refId="Package\Person\Staging.Inputs[OLE DB Destination Input].ExternalColumns[PersonType]"
+                      dataType="wstr"
+                      length="2"
+                      name="PersonType" />
+                    <externalMetadataColumn
+                      refId="Package\Person\Staging.Inputs[OLE DB Destination Input].ExternalColumns[NameStyle]"
+                      dataType="bool"
+                      name="NameStyle" />
+                    <externalMetadataColumn
+                      refId="Package\Person\Staging.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
+                      dataType="wstr"
+                      length="8"
+                      name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\Person\Staging.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="50"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\Person\Staging.Inputs[OLE DB Destination Input].ExternalColumns[MiddleName]"
+                      dataType="wstr"
+                      length="50"
+                      name="MiddleName" />
+                    <externalMetadataColumn
+                      refId="Package\Person\Staging.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="50"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\Person\Staging.Inputs[OLE DB Destination Input].ExternalColumns[Suffix]"
+                      dataType="wstr"
+                      length="10"
+                      name="Suffix" />
+                    <externalMetadataColumn
+                      refId="Package\Person\Staging.Inputs[OLE DB Destination Input].ExternalColumns[EmailPromotion]"
+                      dataType="i4"
+                      name="EmailPromotion" />
+                    <externalMetadataColumn
+                      refId="Package\Person\Staging.Inputs[OLE DB Destination Input].ExternalColumns[AdditionalContactInfo]"
+                      dataType="nText"
+                      name="AdditionalContactInfo" />
+                    <externalMetadataColumn
+                      refId="Package\Person\Staging.Inputs[OLE DB Destination Input].ExternalColumns[Demographics]"
+                      dataType="nText"
+                      name="Demographics" />
+                    <externalMetadataColumn
+                      refId="Package\Person\Staging.Inputs[OLE DB Destination Input].ExternalColumns[Created_Dt]"
+                      dataType="dbTimeStamp"
+                      name="Created_Dt" />
+                    <externalMetadataColumn
+                      refId="Package\Person\Staging.Inputs[OLE DB Destination Input].ExternalColumns[SSISTrackId]"
+                      dataType="i4"
+                      name="SSISTrackId" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Person\Staging.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Person\Staging.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Person\Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Person\Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Person\Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Person\Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Person.Paths[Derived Column Output]"
+              endId="Package\Person\Staging.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Person\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Person.Paths[OLE DB Source Output]"
+              endId="Package\Person\Derived Column.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Person\Person.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update Customer data"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{C795CFFD-67E2-4E08-80C6-207991948875}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update Customer data"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{0867F951-3586-4CB6-815E-8B1925EA2254}"
+          SQLTask:SqlStatementSource="DELETE FROM erp.Person&#xA;WHERE EXISTS (SELECT 1 FROM erp.Person&#xA;);&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{13381B11-1A90-4E31-B90B-7974A2E31768}"
+      DTS:From="Package\Update Customer data"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1 1"
+      DTS:To="Package\Person" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="111.2,41.6"
+          Id="Package\Person"
+          TopLeft="110.833327277668,102.466666660639" />
+        <NodeLayout
+          Size="182.4,41.6"
+          Id="Package\Update Customer data"
+          TopLeft="83.3333287802011,19.9333331947194" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1 1]"
+          TopLeft="174.533328780201,61.5333331947194">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-8.10000150253308,40.9333334659196"
+              Start="0,0"
+              End="-8.10000150253308,33.4333334659196">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.4666667329598" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.4666667329598"
+                    Point2="0,20.4666667329598"
+                    Point3="-4,20.4666667329598" />
+                  <mssgle:LineSegment
+                    End="-4.10000150253308,20.4666667329598" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4.10000150253308,20.4666667329598"
+                    Point2="-8.10000150253308,20.4666667329598"
+                    Point3="-8.10000150253308,24.4666667329598" />
+                  <mssgle:LineSegment
+                    End="-8.10000150253308,33.4333334659196" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Person">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="113.6,41.6"
+          Id="Package\Person\Staging"
+          TopLeft="66.6666630241608,173.333332127995" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Person\Derived Column"
+          TopLeft="130.833326184916,92.7333326884772" />
+        <NodeLayout
+          Size="111.2,41.6"
+          Id="Package\Person\Person"
+          TopLeft="209.999988526106,19.0666665340794" />
+        <EdgeLayout
+          Id="Package\Person.Paths[OLE DB Source Output]"
+          TopLeft="265.599988526106,60.6666665340794">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-58.36666234119,32.0666661543978"
+              Start="0,0"
+              End="-58.36666234119,24.5666661543978">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.0333330771989" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.0333330771989"
+                    Point2="0,16.0333330771989"
+                    Point3="-4,16.0333330771989" />
+                  <mssgle:LineSegment
+                    End="-54.36666234119,16.0333330771989" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-54.36666234119,16.0333330771989"
+                    Point2="-58.36666234119,16.0333330771989"
+                    Point3="-58.36666234119,20.0333330771989" />
+                  <mssgle:LineSegment
+                    End="-58.36666234119,24.5666661543978" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Person.Paths[Derived Column Output]"
+          TopLeft="207.233326184916,134.333332688477">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-83.7666631607547,38.9999994395176"
+              Start="0,0"
+              End="-83.7666631607547,31.4999994395176">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.4999997197588" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.4999997197588"
+                    Point2="0,19.4999997197588"
+                    Point3="-4,19.4999997197588" />
+                  <mssgle:LineSegment
+                    End="-79.7666631607547,19.4999997197588" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-79.7666631607547,19.4999997197588"
+                    Point2="-83.7666631607547,19.4999997197588"
+                    Point3="-83.7666631607547,23.4999997197588" />
+                  <mssgle:LineSegment
+                    End="-83.7666631607547,31.4999994395176" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Person\Staging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Person\Person">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

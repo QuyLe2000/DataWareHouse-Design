@@ -1,0 +1,104 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/7/2023 2:04:13 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-R09UK6A"
+  DTS:CreatorName="DESKTOP-R09UK6A\Qlee2"
+  DTS:DTSID="{F539407F-4770-47E5-933C-324919F82F19}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5223.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="FactSale"
+  DTS:PackageType="5"
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{8122C683-3099-46DA-875F-68F2203A1064}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-R09UK6A\SQLEXPRESS.DW_AdventureWorks]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3221A188-C819-4A68-BCDF-DC62795F180B}"
+      DTS:ObjectName="DESKTOP-R09UK6A\SQLEXPRESS.DW_AdventureWorks">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-R09UK6A\SQLEXPRESS;Initial Catalog=DW_AdventureWorks;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Employee-{3221A188-C819-4A68-BCDF-DC62795F180B}DESKTOP-R09UK6A\SQLEXPRESS.DW_AdventureWorks;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-R09UK6A\SQLEXPRESS.DW_AdventureWorks1]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{C3670879-3EA9-48E9-9978-8F6C3D42D0FE}"
+      DTS:ObjectName="DESKTOP-R09UK6A\SQLEXPRESS.DW_AdventureWorks1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-R09UK6A\SQLEXPRESS;Initial Catalog=DW_AdventureWorks;Integrated Security=True;Application Name=SSIS-Employee-{C3670879-3EA9-48E9-9978-8F6C3D42D0FE}DESKTOP-R09UK6A\SQLEXPRESS.DW_AdventureWorks1;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-R09UK6A\SQLEXPRESS.STG_AdventureWorks]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B2A3ECAE-4DB2-4D49-87C6-E21E2EA08983}"
+      DTS:ObjectName="DESKTOP-R09UK6A\SQLEXPRESS.STG_AdventureWorks">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-R09UK6A\SQLEXPRESS;Initial Catalog=STG_AdventureWorks;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Employee-{B2A3ECAE-4DB2-4D49-87C6-E21E2EA08983}DESKTOP-R09UK6A\SQLEXPRESS.STG_AdventureWorks;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-R09UK6A\SQLEXPRESS.STG_AdventureWorks1]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{F0757EDB-E83A-48CC-853C-A364DA6A4A38}"
+      DTS:ObjectName="DESKTOP-R09UK6A\SQLEXPRESS.STG_AdventureWorks1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-R09UK6A\SQLEXPRESS;Initial Catalog=STG_AdventureWorks;Integrated Security=True;Application Name=SSIS-Employee-{F0757EDB-E83A-48CC-853C-A364DA6A4A38}DESKTOP-R09UK6A\SQLEXPRESS.STG_AdventureWorks1;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{6DADA53E-07C4-417F-A62F-9DBED50E3A8B}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3221A188-C819-4A68-BCDF-DC62795F180B}"
+          SQLTask:SqlStatementSource="-- Insert data into FactSales&#xA;INSERT INTO FactSales (SaleKey, DateKey, CustomerKey, ProductKey, CurrencyKey, SalesTerritoryKey, Quantity, TotalAmount)&#xA;SELECT&#xA;    -- Generate unique SaleKey values&#xA;    ROW_NUMBER() OVER (ORDER BY dd.[DateKey], dc.[CustomerKey], dp.[ProductKey]) AS SaleKey,&#xA;    dd.[DateKey],&#xA;    dc.[CustomerKey],&#xA;    dp.[ProductKey],&#xA;    dcur.[CurrencyKey],&#xA;    dst.[SalesTerritoryKey],&#xA;    -- For demonstration purposes, generate random values for Quantity and TotalAmount&#xA;    ABS(CHECKSUM(NEWID())) % 10 + 1 AS Quantity,&#xA;    ABS(CHECKSUM(NEWID())) % 1000 + 10 AS TotalAmount&#xA;FROM&#xA;    [DW_AdventureWorks].[dbo].[DimDate] dd&#xA;    JOIN [DW_AdventureWorks].[dbo].[DimCustomer] dc ON dc.[CustomerKey] IS NOT NULL&#xA;    JOIN [DW_AdventureWorks].[dbo].[DimProduct] dp ON dp.[ProductKey] IS NOT NULL&#xA;    JOIN [DW_AdventureWorks].[dbo].[DimCurrency] dcur ON dcur.[CurrencyKey] IS NOT NULL&#xA;    JOIN [DW_AdventureWorks].[dbo].[DimSalesTerritory] dst ON dst.[SalesTerritoryKey] IS NOT NULL&#xA;WHERE&#xA;    dd.[DateKey] BETWEEN '20100101' AND '20101231';&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Execute SQL Task"
+          TopLeft="155.833324818976,77.9999994575978" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

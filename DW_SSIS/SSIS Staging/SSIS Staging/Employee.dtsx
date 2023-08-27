@@ -1,0 +1,1044 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/4/2023 3:35:03 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-R09UK6A"
+  DTS:CreatorName="DESKTOP-R09UK6A\Qlee2"
+  DTS:DTSID="{B33EA4E7-545D-409B-B641-72770981E561}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5223.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Employee"
+  DTS:PackageType="5"
+  DTS:VersionBuild="40"
+  DTS:VersionGUID="{DB85D65D-8868-4C04-95BC-D6A39669A91A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-R09UK6A\SQLEXPRESS.AdventureWorks2014]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{11F6D108-6F73-4C1F-8C89-77043856ED3C}"
+      DTS:ObjectName="DESKTOP-R09UK6A\SQLEXPRESS.AdventureWorks2014">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-R09UK6A\SQLEXPRESS;Initial Catalog=AdventureWorks2014;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{11F6D108-6F73-4C1F-8C89-77043856ED3C}DESKTOP-R09UK6A\SQLEXPRESS.AdventureWorks2014;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-R09UK6A\SQLEXPRESS.STG_AdventureWorks]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E9FBDD60-DAEB-4C98-98DE-FF991341037B}"
+      DTS:ObjectName="DESKTOP-R09UK6A\SQLEXPRESS.STG_AdventureWorks">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-R09UK6A\SQLEXPRESS;Initial Catalog=STG_AdventureWorks;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{E9FBDD60-DAEB-4C98-98DE-FF991341037B}DESKTOP-R09UK6A\SQLEXPRESS.STG_AdventureWorks;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-R09UK6A\SQLEXPRESS.STG_AdventureWorks 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{FD13E732-7B60-45D6-9165-63547CE2DE97}"
+      DTS:ObjectName="DESKTOP-R09UK6A\SQLEXPRESS.STG_AdventureWorks 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-R09UK6A\SQLEXPRESS;Initial Catalog=STG_AdventureWorks;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{FD13E732-7B60-45D6-9165-63547CE2DE97}DESKTOP-R09UK6A\SQLEXPRESS.STG_AdventureWorks 1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Employee"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{6CFA4849-346B-451F-9734-F1E8F2264DFD}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Employee"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E9FBDD60-DAEB-4C98-98DE-FF991341037B}"
+          SQLTask:SqlStatementSource="DELETE FROM hr.Employee&#xA;WHERE EXISTS (SELECT 1 FROM hr.Employee&#xA;&#xA;);&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Sales Order Detail"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{EADB6D2D-CE76-4E47-9557-518EEB4CBBBE}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sales Order Detail"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Sales Order Detail\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Sales Order Detail\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Sales Order Detail\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Sales Order Detail\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Derived Column.Outputs[Derived Column Output].Columns[SSISTrackID]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Sales Order Detail\Derived Column.Outputs[Derived Column Output].Columns[SSISTrackID]"
+                      name="SSISTrackID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[System::ServerExecutionID]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[System::ServerExecutionID]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Sales Order Detail\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Sales Order Detail\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Sales Order Detail\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Sales Order Detail\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Sales Order Detail\Employee"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Employee"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[HumanResources].[Employee]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Sales Order Detail\Employee.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-R09UK6A\SQLEXPRESS.AdventureWorks2014]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-R09UK6A\SQLEXPRESS.AdventureWorks2014]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
+                      name="BusinessEntityID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[JobTitle]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[JobTitle]"
+                      length="50"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[JobTitle]"
+                      name="JobTitle"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[NationalIDNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[NationalIDNumber]"
+                      length="15"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[NationalIDNumber]"
+                      name="NationalIDNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[LoginID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[LoginID]"
+                      length="256"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[LoginID]"
+                      name="LoginID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[OrganizationNode]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[OrganizationNode]"
+                      length="892"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[OrganizationNode]"
+                      name="OrganizationNode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[OrganizationLevel]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[OrganizationLevel]"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[OrganizationLevel]"
+                      name="OrganizationLevel"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[BirthDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[BirthDate]"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[BirthDate]"
+                      name="BirthDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[MaritalStatus]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[MaritalStatus]"
+                      length="1"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[MaritalStatus]"
+                      name="MaritalStatus"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[Gender]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
+                      length="1"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[Gender]"
+                      name="Gender"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[HireDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[HireDate]"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[HireDate]"
+                      name="HireDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[SalariedFlag]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[SalariedFlag]"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[SalariedFlag]"
+                      name="SalariedFlag"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[VacationHours]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[VacationHours]"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[VacationHours]"
+                      name="VacationHours"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[SickLeaveHours]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[SickLeaveHours]"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[SickLeaveHours]"
+                      name="SickLeaveHours"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[CurrentFlag]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[CurrentFlag]"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[CurrentFlag]"
+                      name="CurrentFlag"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[rowguid]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[rowguid]"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[rowguid]"
+                      name="rowguid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                      name="ModifiedDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
+                      dataType="i4"
+                      name="BusinessEntityID" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[JobTitle]"
+                      dataType="wstr"
+                      length="50"
+                      name="JobTitle" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[NationalIDNumber]"
+                      dataType="wstr"
+                      length="15"
+                      name="NationalIDNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[LoginID]"
+                      dataType="wstr"
+                      length="256"
+                      name="LoginID" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[OrganizationNode]"
+                      dataType="bytes"
+                      length="892"
+                      name="OrganizationNode" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[OrganizationLevel]"
+                      dataType="i2"
+                      name="OrganizationLevel" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[BirthDate]"
+                      dataType="dbDate"
+                      name="BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[MaritalStatus]"
+                      dataType="wstr"
+                      length="1"
+                      name="MaritalStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
+                      dataType="wstr"
+                      length="1"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[HireDate]"
+                      dataType="dbDate"
+                      name="HireDate" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[SalariedFlag]"
+                      dataType="bool"
+                      name="SalariedFlag" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[VacationHours]"
+                      dataType="i2"
+                      name="VacationHours" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[SickLeaveHours]"
+                      dataType="i2"
+                      name="SickLeaveHours" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[CurrentFlag]"
+                      dataType="bool"
+                      name="CurrentFlag" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[rowguid]"
+                      dataType="guid"
+                      name="rowguid" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
+                      dataType="i4"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
+                      name="BusinessEntityID" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[NationalIDNumber]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[NationalIDNumber]"
+                      name="NationalIDNumber" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[LoginID]"
+                      dataType="wstr"
+                      length="256"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[LoginID]"
+                      name="LoginID" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[OrganizationNode]"
+                      dataType="bytes"
+                      length="892"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[OrganizationNode]"
+                      name="OrganizationNode" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[OrganizationLevel]"
+                      dataType="i2"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[OrganizationLevel]"
+                      name="OrganizationLevel" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[JobTitle]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[JobTitle]"
+                      name="JobTitle" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[BirthDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[BirthDate]"
+                      name="BirthDate" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[MaritalStatus]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[MaritalStatus]"
+                      name="MaritalStatus" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[Gender]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[Gender]"
+                      name="Gender" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[HireDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[HireDate]"
+                      name="HireDate" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[SalariedFlag]"
+                      dataType="bool"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[SalariedFlag]"
+                      name="SalariedFlag" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[VacationHours]"
+                      dataType="i2"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[VacationHours]"
+                      name="VacationHours" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[SickLeaveHours]"
+                      dataType="i2"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[SickLeaveHours]"
+                      name="SickLeaveHours" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[CurrentFlag]"
+                      dataType="bool"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[CurrentFlag]"
+                      name="CurrentFlag" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[rowguid]"
+                      dataType="guid"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[rowguid]"
+                      name="rowguid" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                      name="ModifiedDate" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Sales Order Detail\Staging"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Staging"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[hr].[Employee]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Sales Order Detail\Staging.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-R09UK6A\SQLEXPRESS.STG_AdventureWorks]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-R09UK6A\SQLEXPRESS.STG_AdventureWorks]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].Columns[ModifiedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ModifiedDate"
+                      externalMetadataColumnId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[ModifiedDate]" />
+                    <inputColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].Columns[rowguid]"
+                      cachedDataType="guid"
+                      cachedName="rowguid"
+                      externalMetadataColumnId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[rowguid]"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[rowguid]" />
+                    <inputColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].Columns[SSISTrackID]"
+                      cachedDataType="i8"
+                      cachedName="SSISTrackID"
+                      externalMetadataColumnId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[SSISTrackId]"
+                      lineageId="Package\Sales Order Detail\Derived Column.Outputs[Derived Column Output].Columns[SSISTrackID]" />
+                    <inputColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].Columns[BusinessEntityID]"
+                      cachedDataType="i4"
+                      cachedName="BusinessEntityID"
+                      externalMetadataColumnId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[BusinessEntityID]"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[BusinessEntityID]" />
+                    <inputColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].Columns[NationalIDNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="NationalIDNumber"
+                      externalMetadataColumnId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[NationalIDNumber]"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[NationalIDNumber]" />
+                    <inputColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].Columns[LoginID]"
+                      cachedDataType="wstr"
+                      cachedLength="256"
+                      cachedName="LoginID"
+                      externalMetadataColumnId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[LoginID]"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[LoginID]" />
+                    <inputColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].Columns[OrganizationNode]"
+                      cachedDataType="bytes"
+                      cachedLength="892"
+                      cachedName="OrganizationNode"
+                      externalMetadataColumnId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[OrganizationNode]"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[OrganizationNode]" />
+                    <inputColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].Columns[OrganizationLevel]"
+                      cachedDataType="i2"
+                      cachedName="OrganizationLevel"
+                      externalMetadataColumnId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[OrganizationLevel]"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[OrganizationLevel]" />
+                    <inputColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].Columns[JobTitle]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="JobTitle"
+                      externalMetadataColumnId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[JobTitle]"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[JobTitle]" />
+                    <inputColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].Columns[BirthDate]"
+                      cachedDataType="dbDate"
+                      cachedName="BirthDate"
+                      externalMetadataColumnId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[BirthDate]"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[BirthDate]" />
+                    <inputColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].Columns[MaritalStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="MaritalStatus"
+                      externalMetadataColumnId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[MaritalStatus]"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[MaritalStatus]" />
+                    <inputColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Gender"
+                      externalMetadataColumnId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[Gender]" />
+                    <inputColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].Columns[HireDate]"
+                      cachedDataType="dbDate"
+                      cachedName="HireDate"
+                      externalMetadataColumnId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[HireDate]"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[HireDate]" />
+                    <inputColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].Columns[SalariedFlag]"
+                      cachedDataType="bool"
+                      cachedName="SalariedFlag"
+                      externalMetadataColumnId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[SalariedFlag]"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[SalariedFlag]" />
+                    <inputColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].Columns[VacationHours]"
+                      cachedDataType="i2"
+                      cachedName="VacationHours"
+                      externalMetadataColumnId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[VacationHours]"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[VacationHours]" />
+                    <inputColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].Columns[SickLeaveHours]"
+                      cachedDataType="i2"
+                      cachedName="SickLeaveHours"
+                      externalMetadataColumnId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[SickLeaveHours]"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[SickLeaveHours]" />
+                    <inputColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].Columns[CurrentFlag]"
+                      cachedDataType="bool"
+                      cachedName="CurrentFlag"
+                      externalMetadataColumnId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[CurrentFlag]"
+                      lineageId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output].Columns[CurrentFlag]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[rowguid]"
+                      dataType="guid"
+                      name="rowguid" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[Created_Dt]"
+                      dataType="dbTimeStamp"
+                      name="Created_Dt" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[SSISTrackId]"
+                      dataType="i4"
+                      name="SSISTrackId" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[BusinessEntityID]"
+                      dataType="i4"
+                      name="BusinessEntityID" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[NationalIDNumber]"
+                      dataType="wstr"
+                      length="15"
+                      name="NationalIDNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[LoginID]"
+                      dataType="wstr"
+                      length="256"
+                      name="LoginID" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[OrganizationNode]"
+                      dataType="bytes"
+                      length="892"
+                      name="OrganizationNode" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[OrganizationLevel]"
+                      dataType="i2"
+                      name="OrganizationLevel" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[JobTitle]"
+                      dataType="wstr"
+                      length="50"
+                      name="JobTitle" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[BirthDate]"
+                      dataType="dbDate"
+                      name="BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[MaritalStatus]"
+                      dataType="wstr"
+                      length="1"
+                      name="MaritalStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      dataType="wstr"
+                      length="1"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[HireDate]"
+                      dataType="dbDate"
+                      name="HireDate" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[SalariedFlag]"
+                      dataType="bool"
+                      name="SalariedFlag" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[VacationHours]"
+                      dataType="i2"
+                      name="VacationHours" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[SickLeaveHours]"
+                      dataType="i2"
+                      name="SickLeaveHours" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input].ExternalColumns[CurrentFlag]"
+                      dataType="bool"
+                      name="CurrentFlag" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Sales Order Detail\Staging.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Sales Order Detail\Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Sales Order Detail\Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Sales Order Detail\Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Sales Order Detail.Paths[Derived Column Output]"
+              endId="Package\Sales Order Detail\Staging.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Sales Order Detail\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Sales Order Detail.Paths[OLE DB Source Output]"
+              endId="Package\Sales Order Detail\Derived Column.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Sales Order Detail\Employee.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{7C21877E-EB62-42E4-B3B4-9556DC24E3A9}"
+      DTS:From="Package\Employee"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1 1"
+      DTS:To="Package\Sales Order Detail" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="124.8,41.6"
+          Id="Package\Employee"
+          TopLeft="83.3333287802011,19.9333331947194" />
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\Sales Order Detail"
+          TopLeft="110.833327277668,102.466666660639" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1 1]"
+          TopLeft="145.733328780201,61.5333331947194">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="46.6999984974669,40.9333334659196"
+              Start="0,0"
+              End="46.6999984974669,33.4333334659196">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.4666667329598" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.4666667329598"
+                    Point2="0,20.4666667329598"
+                    Point3="4,20.4666667329598" />
+                  <mssgle:LineSegment
+                    End="42.6999984974669,20.4666667329598" />
+                  <mssgle:CubicBezierSegment
+                    Point1="42.6999984974669,20.4666667329598"
+                    Point2="46.6999984974669,20.4666667329598"
+                    Point3="46.6999984974669,24.4666667329598" />
+                  <mssgle:LineSegment
+                    End="46.6999984974669,33.4333334659196" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Sales Order Detail">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="124.8,41.6"
+          Id="Package\Sales Order Detail\Employee"
+          TopLeft="283.333317852683,19.0666665340794" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Sales Order Detail\Derived Column"
+          TopLeft="130.833326184916,92.7333326884772" />
+        <NodeLayout
+          Size="113.6,41.6"
+          Id="Package\Sales Order Detail\Staging"
+          TopLeft="66.6666630241608,173.333332127995" />
+        <EdgeLayout
+          Id="Package\Sales Order Detail.Paths[OLE DB Source Output]"
+          TopLeft="345.733317852683,60.6666665340794">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-138.499991667767,32.0666661543978"
+              Start="0,0"
+              End="-138.499991667767,24.5666661543978">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.0333330771989" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.0333330771989"
+                    Point2="0,16.0333330771989"
+                    Point3="-4,16.0333330771989" />
+                  <mssgle:LineSegment
+                    End="-134.499991667767,16.0333330771989" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-134.499991667767,16.0333330771989"
+                    Point2="-138.499991667767,16.0333330771989"
+                    Point3="-138.499991667767,20.0333330771989" />
+                  <mssgle:LineSegment
+                    End="-138.499991667767,24.5666661543978" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sales Order Detail.Paths[Derived Column Output]"
+          TopLeft="207.233326184916,134.333332688477">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-83.7666631607547,38.9999994395176"
+              Start="0,0"
+              End="-83.7666631607547,31.4999994395176">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.4999997197588" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.4999997197588"
+                    Point2="0,19.4999997197588"
+                    Point3="-4,19.4999997197588" />
+                  <mssgle:LineSegment
+                    End="-79.7666631607547,19.4999997197588" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-79.7666631607547,19.4999997197588"
+                    Point2="-83.7666631607547,19.4999997197588"
+                    Point3="-83.7666631607547,23.4999997197588" />
+                  <mssgle:LineSegment
+                    End="-83.7666631607547,31.4999994395176" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sales Order Detail\Employee">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sales Order Detail\Staging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
